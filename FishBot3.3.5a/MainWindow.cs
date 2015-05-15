@@ -161,9 +161,10 @@ namespace FishBot
                                     Log.Write("Caught something, hopefully a fish!", Color.Black);
                     
                                     wowHook.Memory.Write<UInt64>(Offsets.MouseOverGUID, cGUID, false);
-                                    Thread.Sleep(100);
+                                    Thread.Sleep(50);
 
-                                    lua.DoString(string.Format("InteractUnit('mouseover')"));
+                                    lua.RightClickObject((uint)curObj, 1);
+
                                     lastBobberGuid.Add(cGUID);
                                     Thread.Sleep(200);
                                                                         
