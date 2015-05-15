@@ -8,6 +8,8 @@ namespace FishBot
 {
     public class Lua
     {
+        private bool codecaveCreated;
+        private IntPtr codecave;
         private readonly Hook _wowHook;
         public Lua(Hook wowHook)
         {
@@ -40,7 +42,11 @@ namespace FishBot
 
         void AutoLoot()
         {
-            IntPtr codecave = _wowHook.Memory.AllocateMemory(512);
+            if (codecaveCreated) return;
+
+            codecaveCreated = true;
+
+            codecave = _wowHook.Memory.AllocateMemory(512);
             _wowHook.Memory.Asm.Clear();
             _wowHook.Memory.Asm.AddLine("call " + (uint)0x4C1FA0);
             _wowHook.Memory.Asm.AddLine("retn");
@@ -53,8 +59,7 @@ namespace FishBot
             {
                 AutoLoot();
                 System.Threading.Thread.Sleep(50);
-
-                IntPtr codecave = _wowHook.Memory.AllocateMemory(512);
+                
                 _wowHook.Memory.Asm.Clear();
                 _wowHook.Memory.Asm.AddLine("push {0}", autoLoot);
                 _wowHook.Memory.Asm.AddLine("mov ECX, " + (uint)_curObject);
