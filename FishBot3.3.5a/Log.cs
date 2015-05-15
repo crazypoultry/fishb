@@ -24,6 +24,7 @@ using System.Windows.Documents;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
+
 namespace FishBot
 {
     public class Log
