@@ -2,6 +2,7 @@
 
 This is a basic fishing bot for wow version 1.12.1 private servers.
 It works on windows 7 (8 if you lucky) and wow version 1.12.1.
+Ignore the fact that some sub-folders say version 3.3.5a (this is strictly for 1.12.1).
 
 Screenshot of the bot in action
 
